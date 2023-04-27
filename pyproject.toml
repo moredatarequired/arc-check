@@ -98,6 +98,7 @@ ignore = [
   "D1",   # Allow missing docstrings.
   "D417", # Don't require descriptions for all arguments.
   "S101",
+  "S105",  # Possible hardcoded passwords -- too many false positives.
 ]
 target-version = "py37"
 fix = true
