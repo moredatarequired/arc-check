@@ -10,6 +10,10 @@
 - [Installation](#installation)
 - [License](#license)
 
+## Description
+
+`arc` is a command to simplify retrieving information about CircleCI runs. It's a read-only wrapper around the CircleCI API. (v2 only)
+
 ## Installation
 
 ```console
