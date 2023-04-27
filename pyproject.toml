@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "Arc Check"
+name = "arc-check"
 description = "A library and CLI tool for interacting with the CircleCI API"
 readme = "README.md"
 requires-python = ">=3.7"

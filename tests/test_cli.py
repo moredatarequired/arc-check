@@ -1,6 +1,6 @@
 from click.testing import CliRunner
 
-from arc-check.cli import cli
+from arc_check.cli import cli
 
 
 def test_hello_world():
