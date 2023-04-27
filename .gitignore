@@ -1,0 +1,7 @@
+__pycache__
+*.pyc
+.pyre
+.ruff_cache
+.vscode/
+logs/
+*.log

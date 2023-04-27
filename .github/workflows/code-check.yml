@@ -1,0 +1,41 @@
+name: Static code checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  pyre:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Code checker caches
+        id: code-checker-cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            .pyre
+            .ruff_cache
+            ~/.cache
+          key: ${{ runner.os }}-code-checker-${{ hashFiles('pyproject.toml') }}
+          restore-keys: ${{ runner.os }}-code-checker
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install Hatch
+        run: pip install --upgrade hatch
+
+      - name: Run Black
+        run: hatch run format-check .
+
+      - name: Run Ruff
+        run: hatch run lint .
+
+      - name: Run Pyre
+        run: hatch run type-check

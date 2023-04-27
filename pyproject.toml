@@ -1,0 +1,110 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "Arc Check"
+description = "A library and CLI tool for interacting with the CircleCI API"
+readme = "README.md"
+requires-python = ">=3.7"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "Hugh Wimberly", email = "hugh.wimberly@gmail.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  "click",
+]
+dynamic = ["version"]
+
+[project.urls]
+Documentation = "https://github.com/moredatarequired/arc-check#readme"
+Issues = "https://github.com/moredatarequired/arc-check/issues"
+Source = "https://github.com/moredatarequired/arc-check"
+
+[project.scripts]
+arc = "arc_check.cli:cli"
+
+[tool.hatch.version]
+path = "src/arc_check/__about__.py"
+
+[tool.hatch.envs.default]
+dependencies = [
+  "black",
+  "pyre-check",
+  "pytest",
+  "pytest-cov",
+  "ruff",
+]
+[tool.hatch.envs.default.scripts]
+cov = "pytest --cov-report=xml --cov-config=pyproject.toml --cov=src/arc_check --cov=tests {args}"
+no-cov = "cov --no-cov {args}"
+format = "black {args}"
+format-check = "black --check {args}"
+lint = "ruff {args}"
+lint-fix = "ruff --fix {args}"
+type-check = "pyre --noninteractive check {args}"
+
+[[tool.hatch.envs.test.matrix]]
+python = ["37", "38", "39", "310", "311"]
+
+[tool.coverage.run]
+branch = true
+parallel = true
+omit = [
+  "src/arc_check/__about__.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+
+[tool.ruff]
+src = ["src"]
+select = [
+  "A",
+  "B",
+  "C4",
+  "C90",
+  "D",
+  "E",
+  "F",
+  "I",
+  "N",
+  "PLE",
+  "PT",
+  "RSE",
+  "RUF",
+  "S",
+  "SIM",
+  "UP",
+  "W",
+]
+ignore = [
+  "D1",   # Allow missing docstrings.
+  "D417", # Don't require descriptions for all arguments.
+  "S101",
+]
+target-version = "py37"
+fix = true
+format = "grouped"
+
+[tool.ruff.isort]
+split-on-trailing-comma = false
+
+[tool.ruff.pydocstyle]
+convention = "google"

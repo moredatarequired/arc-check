@@ -1,0 +1,18 @@
+{
+  "template": "https://github.com/moredatarequired/postmodern-cookiecutter",
+  "commit": "99fb83793d1d429c4cf70e13e686fab0510ab085",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "author_name": "Hugh Wimberly",
+      "author_email": "hugh.wimberly@gmail.com",
+      "github_username": "moredatarequired",
+      "project_name": "Arc Check",
+      "project_slug": "arc-check",
+      "package_name": "arc_check",
+      "project_short_description": "A library and CLI tool for interacting with the CircleCI API",
+      "_template": "https://github.com/moredatarequired/postmodern-cookiecutter"
+    }
+  },
+  "directory": null
+}
